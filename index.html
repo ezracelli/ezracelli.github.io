@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  >
+  
+  <title>Ezra Celli</title>
+  <link rel="icon" type="image/png" href="./favicon.png">
+  
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      user-select: none;
+    }
+    
+    a {
+      color: black;
+    }
+    
+    a:hover {
+      color: black;
+    }
+    
+    .nav-wrapper {
+      width: calc(100vw - 30px);
+      height: calc(100vh - 30px);
+      margin: 15px;
+      padding: 20px;
+      border: 1px solid black;
+      position: fixed;
+/*      z-index: 1;*/
+      
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+    
+    .nav {
+      width: 100%;
+      height: 100%;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .nav .col:last-child {
+      text-align: right;
+    }
+    
+    .nav-text {
+      display: inline-block;
+    }
+    
+    [id*="link"]:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    [id*="link"].active {
+      text-decoration: underline;
+      pointer-events: none;
+    }
+    
+    .content-wrapper {
+      position: absolute;
+      top: 45vh;
+      left: 25vw;
+    }
+    
+    .content-wrapper hr {
+      border-top-color: black;
+    }
+    
+    .content-wrapper h1 {
+      font-size: 3rem;
+    }
+    
+    .main-text-detail > * {
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    
+    .main-text-detail > .hidden {
+      height: 0 !important;
+    }
+    
+    #code,
+    #screenshots {
+      margin-top: calc(-35vh - 40px);
+      height: 80vh;
+      margin-left: -10vw;
+      width: 70vw;
+      display: none;
+    }
+    
+    code {
+      color: black;
+      background-color: rgba(27,31,35,.05);
+      border-radius: 3px;
+      padding: .2em .4em;
+    }
+    
+    #screenshots {
+      margin-top: -45vh;
+      margin-left: -15vw;
+    }
+    
+    .screenshots-scroll-container {
+      width: 80vw;
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+    
+    .screenshots-scroll-container::-webkit-scrollbar { 
+        display: none; 
+    }
+    
+    .screenshots-scroll-container img {
+      width: 100%;
+      margin-bottom: 50vh;
+      scroll-snap-align: center;
+    }
+    
+    .screenshots-scroll-container img:last-of-type {
+      margin-bottom: 0;
+    }
+    
+  </style>
+  
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+  ></script>
+
+</head>
+
+<body>
+  <div class="nav-wrapper">
+    <div class="nav">
+     
+      <div class="row">
+        <div class="col">
+          <a
+            href="https://www.dropbox.com/s/a2w2y8noparl85v/Ezra%20Celli%20resume.pdf?dl=1"
+            class="nav-text top left"
+          >RESUME</a>
+        </div>
+        
+        <div class="col">
+          <span
+            id="link-code"
+            class="nav-text top right"
+          >CODE SAMPLES</span>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <span
+            id="link-screenshots"
+            class="nav-text bottom left"
+          >SCREENSHOTS</span>
+        </div>
+        
+        <div class="col">
+          <span
+            id="link-contact"
+            class="nav-text bottom right"
+          >CONTACT</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+  <div class="content-wrapper">
+    <div id="main-text">
+      <h1 class="mb-0">Ezra Celli</h1>
+      <hr>
+      <div class="main-text-detail">
+        <div id="detail-home">
+          <div>JS ES6+, HTML5+CSS3, UI/UX</div>
+          <div>vue.js expert (incl. vuex &amp; vue-router)</div>
+          <div>webpack, git, bootstrap v4</div>
+        </div>
+        <div id="detail-contact">
+          <div>
+            <a href="tel:5859674503">585-967-4503</a>
+          </div>
+          <div>
+            <a href="email:ezra@hacari.net">ezra@hacari.net</a>
+          </div>
+          
+          <div class="pt-2">
+            <small
+              id="link-home-from-contact"
+              class="font-italic"
+            >back</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="code">
+          
+      <div class="pb-3">
+        <small
+          class=""
+        >
+          Contains
+          <code>TheAutosizeTextarea.vue</code>
+          and
+          <code>TheAsyncButton.vue</code>
+        </small>
+      </div>
+          
+      <iframe src="https://codesandbox.io/embed/olpj3222q9?fontsize=12&hidenavigation=1&autoresize=1&view=browser&verticallayout=0&module=%2Fsrc%2FApp.vue" style="width:100%; height:100%; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+          
+      <div class="pt-2">
+        <small
+          id="link-home-from-code"
+          class="font-italic"
+        >back</small>
+      </div>
+      
+    </div>
+    
+    <div id="screenshots">
+      <div class="screenshots-scroll-container">
+        <img src="./screenshot-form.png" alt="Screenshot of form">
+        <img src="./screenshot-courses.png" alt="Screenshot of courses">
+        <img src="./screenshot-dashboard.png" alt="Screenshot of dashboard">
+          
+        <div class="pt-2">
+          <small
+            id="link-home-from-screenshots"
+            class="font-italic position-fixed"
+            style="bottom: 40px"
+          >back</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  
+  <script>
+    // link positioning
+    
+    var links = $('.nav-text')
+    
+    for (var link of links) {
+      var position = link.className.replace(/nav-text /, '')
+      $(link).css('transform-origin', position)
+      
+      var isTop = /top/.test(position)
+      var isLeft = /left/.test(position)
+      
+      var rotation = `rotate(${isLeft ? '-' : ''}90deg)`
+      
+      var translation = `translate${
+          isTop ? 'X' : 'Y'
+        }(${
+          isTop && isLeft ? '-' : ''
+        }100%)`
+      
+      $(link).css('transform', `${rotation} ${translation}`)
+    }
+    
+    
+    // set up transitions
+    
+    for (var el of $('div[id^="detail"]')) {
+      $(el).css('height', el.clientHeight)
+    }
+    $('#detail-contact').addClass('hidden')
+
+    
+    // set up link handlers
+    
+    var goHomeExcept = active => {
+      for (link of $('[id^="link-home-"]')) {
+        if (!link.id.includes(active)) $(link).click()
+      }
+    }
+    
+    var setActiveLink = active => {
+      $('.active').removeClass('active')
+      $('#link-' + active).addClass('active')
+    }
+    
+    $('#link-contact').click(() => {
+      goHomeExcept('contact')
+      setActiveLink('contact')
+      $('#detail-home').addClass('hidden')
+      setTimeout(() => $('#detail-contact').removeClass('hidden'), 300)
+    })
+    
+    $('#link-home-from-contact').click(() => {
+      setActiveLink(null)
+      $('#detail-contact').addClass('hidden')
+      setTimeout(() => $('#detail-home').removeClass('hidden'), 300)
+    })
+    
+    var setAsFullScreen = (active, prev) => {
+      if (active) goHomeExcept(active)
+      setActiveLink(active)
+      
+      if (active) {
+        $('#main-text').addClass('d-none')
+        $('#' + active).addClass('d-block')
+      } else {
+        $('#' + prev).removeClass('d-block')
+        $('#main-text').removeClass('d-none')
+      }
+    }
+    
+    $('#link-code').click(() => setAsFullScreen('code'))
+    $('#link-home-from-code').click(() => setAsFullScreen(null, 'code'))
+    
+    $('#link-screenshots').click(() => {
+      setAsFullScreen('screenshots')
+      
+      var screenshotHeight = $('.screenshots-scroll-container img').height()
+      var paddingY = (window.innerHeight - screenshotHeight) / 2
+      console.log(paddingY)
+      $('.screenshots-scroll-container').css('padding', `${paddingY}px 0`)
+    })
+    $('#link-home-from-screenshots').click(() => {
+      setAsFullScreen(null, 'screenshots')
+    })
+    
+    setTimeout(() => $('.nav-wrapper').css('opacity', '1'), 1000)
+  </script>
+  
+</body>
+</html>
