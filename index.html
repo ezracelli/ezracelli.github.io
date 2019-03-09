@@ -28,6 +28,10 @@
       color: black;
     }
     
+    btn:focus {
+      box-shadow: none;
+    }
+    
     .nav-wrapper {
       width: calc(100vw - 30px);
       height: calc(100vh - 30px);
@@ -91,12 +95,38 @@
       height: 0 !important;
     }
     
+    a.btn {
+      border: 1px solid black;
+      margin-right: 0.25rem;
+      transition: box-shadow 0.3s;
+    }
+    
+    a.btn:hover {
+      box-shadow:
+        0 4px 5px 0 rgba(0,0,0,.14),
+        0 1px 10px 0 rgba(0,0,0,.12),
+        0 2px 4px -1px rgba(0,0,0,.2);
+    }
+    
+    a.btn:first-of-type img {
+      height: 24px;
+    }
+    
+    a.btn:last-of-type {
+/*      padding-top: calc(0.25rem + 1px);*/
+      padding-bottom: calc(0.25rem + 3px);
+    }
+    
+    a.btn:last-of-type img {
+      height: 18px;
+    }
+    
     #code,
     #screenshots {
-      margin-top: calc(-35vh - 40px);
+      width: 80vw;
       height: 80vh;
-      margin-left: -10vw;
-      width: 70vw;
+      margin-top: calc(-35vh - 40px);
+      margin-left: -15vw;
       display: none;
     }
     
@@ -109,7 +139,8 @@
     
     #screenshots {
       margin-top: -45vh;
-      margin-left: -15vw;
+      height: 100vh;
+      overflow: hidden;
     }
     
     .screenshots-scroll-container {
@@ -119,6 +150,12 @@
       scroll-snap-type: y mandatory;
     }
     
+    .screenshots-scroll-container:after {
+      content: "";
+      height: 0;
+      display: block;
+    }
+    
     .screenshots-scroll-container::-webkit-scrollbar { 
         display: none; 
     }
@@ -126,6 +163,7 @@
     .screenshots-scroll-container img {
       width: 100%;
       margin-bottom: 50vh;
+/*      max-height: 80vh;*/
       scroll-snap-align: center;
     }
     
@@ -193,10 +231,26 @@
         </div>
         <div id="detail-contact">
           <div>
-            <a href="tel:5859674503">585-967-4503</a>
+            <a href="email:ezra@hacari.net">ezra@hacari.net</a>
           </div>
           <div>
-            <a href="email:ezra@hacari.net">ezra@hacari.net</a>
+            <a href="tel:5859674503">585-967-4503</a>
+          </div>
+          <div class="pt-2">
+            <a
+              href="https://github.com/ezracelli"
+              target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm"
+            >
+              <img src="./logo-github.png" alt="Github">
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ezracelli/"
+              target="_blank" rel="noopener noreferrer"
+              class="btn btn-sm"
+            >
+              <img src="./logo-linkedin.png" alt="LinkedIn">
+            </a>
           </div>
           
           <div class="pt-2">
@@ -222,7 +276,7 @@
         </small>
       </div>
           
-      <iframe src="https://codesandbox.io/embed/olpj3222q9?fontsize=12&hidenavigation=1&autoresize=1&view=browser&verticallayout=0&module=%2Fsrc%2FApp.vue" style="width:100%; height:100%; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+      <iframe src="https://codesandbox.io/embed/olpj3222q9?fontsize=12&hidenavigation=1&autoresize=1&view=split&verticallayout=0&module=%2Fsrc%2FApp.vue" style="width:100%; height:100%; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
           
       <div class="pt-2">
         <small
@@ -239,7 +293,7 @@
         <img src="./screenshot-courses.png" alt="Screenshot of courses">
         <img src="./screenshot-dashboard.png" alt="Screenshot of dashboard">
           
-        <div class="pt-2">
+        <div>
           <small
             id="link-home-from-screenshots"
             class="font-italic position-fixed"
@@ -301,14 +355,26 @@
     $('#link-contact').click(() => {
       goHomeExcept('contact')
       setActiveLink('contact')
+      
+//      $('#detail-home').css('overflow', null)
       $('#detail-home').addClass('hidden')
-      setTimeout(() => $('#detail-contact').removeClass('hidden'), 300)
+      
+      setTimeout(() => {
+        $('#detail-contact').removeClass('hidden')
+        setTimeout(() => $('#detail-contact').css('overflow', 'visible'), 300)
+      }, 300)
     })
     
     $('#link-home-from-contact').click(() => {
       setActiveLink(null)
+      
+      $('#detail-contact').css('overflow', '')
       $('#detail-contact').addClass('hidden')
-      setTimeout(() => $('#detail-home').removeClass('hidden'), 300)
+      
+      setTimeout(() => {
+        $('#detail-home').removeClass('hidden')
+//        setTimeout(() => $('#detail-home').css('overflow', 'visible'), 300)
+      }, 300)
     })
     
     var setAsFullScreen = (active, prev) => {
@@ -333,7 +399,16 @@
       var screenshotHeight = $('.screenshots-scroll-container img').height()
       var paddingY = (window.innerHeight - screenshotHeight) / 2
       console.log(paddingY)
-      $('.screenshots-scroll-container').css('padding', `${paddingY}px 0`)
+      $('.screenshots-scroll-container').css('padding', `${paddingY}px 0 0`)
+      
+      var styles = `
+      <style>
+        .screenshots-scroll-container:after {
+          height: ${paddingY}px;
+        }
+      </style>`
+      console.log(styles)
+      $('head').append(styles)
     })
     $('#link-home-from-screenshots').click(() => {
       setAsFullScreen(null, 'screenshots')
