@@ -163,7 +163,6 @@
     .screenshots-scroll-container img {
       width: 100%;
       margin-bottom: 50vh;
-/*      max-height: 80vh;*/
       scroll-snap-align: center;
     }
     
@@ -175,6 +174,10 @@
   
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
+  ></script>
+  
+  <script
+    src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"
   ></script>
 
 </head>
@@ -393,12 +396,10 @@
     $('#link-code').click(() => setAsFullScreen('code'))
     $('#link-home-from-code').click(() => setAsFullScreen(null, 'code'))
     
-    $('#link-screenshots').click(() => {
-      setAsFullScreen('screenshots')
+    var setPaddingForScreenshots = () => {
       
       var screenshotHeight = $('.screenshots-scroll-container img').height()
       var paddingY = (window.innerHeight - screenshotHeight) / 2
-      console.log(paddingY)
       $('.screenshots-scroll-container').css('padding', `${paddingY}px 0 0`)
       
       var styles = `
@@ -409,11 +410,19 @@
       </style>`
       console.log(styles)
       $('head').append(styles)
+      
+    }
+    
+    $('#link-screenshots').click(() => {
+      setAsFullScreen('screenshots')
+      setPaddingForScreenshots()
     })
     $('#link-home-from-screenshots').click(() => {
       setAsFullScreen(null, 'screenshots')
     })
     
+    var setPaddingForScreenshotsDebounced = _.debounce(setPaddingForScreenshots, 500)
+    window.addEventListener('resize', setPaddingForScreenshotsDebounced)
     setTimeout(() => $('.nav-wrapper').css('opacity', '1'), 1000)
   </script>
   
