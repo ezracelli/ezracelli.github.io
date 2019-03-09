@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+btn:focus {
+  box-shadow: none;
+}
+
+.nav-wrapper {
+  width: calc(100vw - 30px);
+  height: calc(100vh - 30px);
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid black;
+  position: fixed;
+/*      z-index: 1;*/
+
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav .col:last-child {
+  text-align: right;
+}
+
+.nav-text {
+  display: inline-block;
+}
+
+[id*="link"]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+[id*="link"].active {
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 45vh;
+  left: 25vw;
+}
+
+.content-wrapper hr {
+  border-top-color: black;
+}
+
+.content-wrapper h1 {
+  font-size: 3rem;
+}
+
+.main-text-detail {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.main-text-detail > * {
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.main-text-detail > .hidden {
+  height: 0 !important;
+}
+
+a.btn {
+  border: 1px solid black;
+  margin-right: 0.25rem;
+  transition: box-shadow 0.3s;
+}
+
+a.btn:hover {
+  box-shadow:
+    0 4px 5px 0 rgba(0,0,0,.14),
+    0 1px 10px 0 rgba(0,0,0,.12),
+    0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+a.btn:first-of-type img {
+  height: 24px;
+}
+
+a.btn:last-of-type {
+/*      padding-top: calc(0.25rem + 1px);*/
+  padding-bottom: calc(0.25rem + 3px);
+}
+
+a.btn:last-of-type img {
+  height: 18px;
+}
+
+#code,
+#screenshots {
+  width: 80vw;
+  height: 80vh;
+  margin-top: calc(-35vh - 40px);
+  margin-left: -15vw;
+  display: none;
+}
+
+code {
+  color: black;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  padding: .2em .4em;
+}
+
+#screenshots {
+  margin-top: -45vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.screenshots-scroll-container {
+  width: 80vw;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.screenshots-scroll-container:after {
+  content: "";
+  height: 0;
+  display: block;
+}
+
+.screenshots-scroll-container::-webkit-scrollbar { 
+    display: none; 
+}
+
+.screenshots-scroll-container img {
+  width: 100%;
+  margin-bottom: 50vh;
+  scroll-snap-align: center;
+}
+
+.screenshots-scroll-container img:last-of-type {
+  margin-bottom: 0;
+}
